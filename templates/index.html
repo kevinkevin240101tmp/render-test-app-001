@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>AI 貼文生成器</title>
+    <style>
+        body {
+            background-color: #343541;
+            color: #ececf1;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 420px;
+            max-width: 90%;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #40414f;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        label { display: block; margin-top: 15px; margin-bottom: 6px; }
+        input[type="text"] { width: 100%; padding: 8px; border-radius: 6px; border: none; font-size: 14px; box-sizing: border-box; }
+        input[type="submit"] { width: 100%; margin-top: 25px; padding: 10px; background-color: #19c37d; color: #000; font-size: 15px; border: none; border-radius: 6px; cursor: pointer; }
+        input[type="submit"]:hover { background-color: #16a46b; }
+
+        .message { margin-top: 20px; padding: 10px; background-color: #5a5b6a; border-radius: 6px; white-space: pre-wrap; }
+        .posts { margin-top: 20px; padding: 15px; background-color: #2b2c34; border-radius: 6px; white-space: pre-wrap; }
+
+        @media (max-width: 500px) {
+            .container { margin: 30px 10px; padding: 20px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>AI 貼文生成器</h2>
+
+        <form method="POST">
+            <label>品牌名稱</label>
+            <input type="text" name="brand" required>
+
+            <label>產品名稱</label>
+            <input type="text" name="product" required>
+
+            <label>目標客群</label>
+            <input type="text" name="audience" required>
+
+            <input type="submit" value="生成貼文">
+        </form>
+
+        {% if message %}
+            <div class="message">{{ message }}</div>
+        {% endif %}
+
+        {% if posts %}
+            <div class="posts">{{ posts }}</div>
+        {% endif %}
+
+        <div style="margin-top: 15px;">
+            <a href="/logout" style="color: #19c37d;">登出</a>
+        </div>
+    </div>
+</body>
+</html>
